@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airport Info Finder</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Airport Reference Desk</div>
+      <h1>Airport Info Finder</h1>
+      <p>Search airports worldwide, explore essential details, and get the information you need before your journey begins.</p>
+    </div>
+  </div>
+
+  <div class="board">
+
+    <div class="panel">
+      <div class="panel-label">Access</div>
+      <h2>AviationStack API key</h2>
+      <label for="apiKey">Your key</label>
+      <input id="apiKey" type="text" placeholder="Paste your key here">
+      <p class="key-note">Get a free key at <a href="https://aviationstack.com" target="_blank" rel="noopener">aviationstack.com</a> — your key stays in this browser tab only, it's never saved.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-label">Lookup</div>
+      <h2>What are you looking for?</h2>
+      <div class="row">
+        <div>
+          <label for="searchType">Search by</label>
+          <select id="searchType">
+            <option value="iata_code">IATA code</option>
+            <option value="search">Airport name</option>
+            <option value="country">Country</option>
+          </select>
+        </div>
+      </div>
+      <div class="search-row">
+        <div class="search-field">
+          <input id="query" type="text" placeholder="Try LHR, EGLL, or London Heathrow" autocomplete="off">
+          <div id="suggestBox" class="suggest-box"></div>
+        </div>
+        <button id="searchBtn">Search airports</button>
+      </div>
+      <div class="chips">
+        <span class="chip-label">Popular codes</span>
+        <span class="chip" data-code="LHR">LHR</span>
+        <span class="chip" data-code="JFK">JFK</span>
+        <span class="chip" data-code="HND">HND</span>
+        <span class="chip" data-code="SIN">SIN</span>
+      </div>
+      <div class="tip">Tip: codes work faster when you already know the destination.</div>
+      <div id="sessionStats" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px;"></div>
+    </div>
+
+    <div id="searchStatus"></div>
+    <div id="resultCard"></div>
+
+    <div class="section-title" style="border-bottom:1px solid var(--line);padding-bottom:14px;">Compare two airports</div>
+    <div class="panel">
+      <div class="row">
+        <div>
+          <label for="cmpA">Airport A — IATA code</label>
+          <input id="cmpA" type="text" placeholder="DFW">
+        </div>
+        <div>
+          <label for="cmpB">Airport B — IATA code</label>
+          <input id="cmpB" type="text" placeholder="LAX">
+        </div>
+      </div>
+      <button id="compareBtn">Compare</button>
+    </div>
+    <div id="compareStatus"></div>
+    <div id="compareResult"></div>
+
+    <div class="section-title">Saved airports</div>
+    <div id="bookmarksList"></div>
+
+  </div>
+
+  <footer>Airport Info Finder · Data via AviationStack</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
